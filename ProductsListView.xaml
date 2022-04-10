@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppProducts.Views.ProductsListView">
+    <!-- Toolbar -->
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Nuevo" Command="{Binding NewCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout>
+
+            <!-- Título -->
+            <Label
+                Text="Listado de sneakers"
+                FontSize="Large"
+                HorizontalOptions="CenterAndExpand" />
+
+            <!-- Listado -->
+            <CollectionView
+                ItemsSource="{Binding ListProducts}"
+                SelectionMode="Single"
+                SelectedItem="{Binding SelectedProduct}"
+                SelectionChangedCommand="{Binding SelectedCommand}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image
+                                Grid.RowSpan="4"
+                                Grid.ColumnSpan="2"
+
+                                WidthRequest="100"
+                                Source="{Binding Picture}" />
+                            <Label
+                                Grid.Column="3"
+                                Grid.Row="1"
+                                FontAttributes="Bold"
+                                Text="{Binding Model}" />
+                            <Label
+                                Grid.Column="3"
+                                Grid.Row="2"
+                                Text="{Binding Category}" />
+                            <Label
+                                Grid.Column="3"
+                                Grid.Row="3"
+                                Text="{Binding Designer}" />
+                            
+                            <Label
+                                Grid.Column="3"
+                                Grid.Row="4"
+                                Text="{Binding Price, StringFormat='{0:C}'}" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <ActivityIndicator
+                IsRunning="{Binding IsBusy}"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

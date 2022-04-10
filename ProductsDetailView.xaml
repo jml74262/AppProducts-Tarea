@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppProducts.Views.ProductsDetailView">
+    <!--Toolbar-->
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Eliminar" Command="{Binding DeleteCommand}" />
+        <ToolbarItem Text="Guardar" Command="{Binding SaveCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout>
+
+            <!-- Título -->
+            <Label
+                Text="Detalle del producto"
+                FontAttributes="Bold"
+                FontFamily="Large"
+                HorizontalTextAlignment="Center" />
+            <!--Spinner-->
+            <!--<ActivityIndicator
+                IsRunning="{Binding IsBusy}"/>-->
+
+            <!-- Detalle -->
+            <Image
+                Source="{Binding ProductPicture}" 
+		        WidthRequest="400"/>
+            <Entry
+                Placeholder="Ingresa el modelo"
+                Text="{Binding ProductModel}" />
+            <Entry
+                Placeholder="Ingresa la categoría"
+                Text="{Binding ProductCategory}" />
+            <Entry
+                Placeholder="Ingresa el diseñador"
+                Text="{Binding ProductDesigner}" />
+            <Entry
+                Placeholder="Ingresa la descripcion"
+                Text="{Binding ProductDescription}" />
+            <Entry
+                Placeholder="Ingresa el precio del producto"
+		        Keyboard="Numeric"
+                Text="{Binding ProductPrice}" />
+            <Entry
+                Placeholder="Ingresa la URL de la imagen"
+                Text="{Binding ProductPicture}" />
+            
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
